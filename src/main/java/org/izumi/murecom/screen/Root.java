@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @UiController("murecom_Root")
 @UiDescriptor("root-screen.xml")
-@Route(path = "root", root = true)
+@Route(path = "main", root = true)
 public class Root extends Screen implements Window.HasWorkArea {
 
     @Autowired

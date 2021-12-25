@@ -21,10 +21,10 @@ import org.springframework.security.authentication.LockedException;
 
 import java.util.Locale;
 
-@UiController("murecom_LoginScreen")
+@UiController("murecom_Login")
 @UiDescriptor("login-screen.xml")
 @Route(path = "login", root = true)
-public class LoginScreen extends Screen {
+public class Login extends Screen {
 
     @Autowired
     private TextField<String> usernameField;
@@ -56,7 +56,7 @@ public class LoginScreen extends Screen {
     @Autowired
     private JmixApp app;
 
-    private final Logger log = LoggerFactory.getLogger(LoginScreen.class);
+    private final Logger log = LoggerFactory.getLogger(Login.class);
 
     @Subscribe
     private void onInit(InitEvent event) {

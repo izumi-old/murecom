@@ -49,19 +49,35 @@
             <column name="ID" type="UUID">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_RULE"/>
             </column>
+            <column name="CREATOR_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
     <changeSet id="5" author="murecom">
         <addUniqueConstraint columnNames="NAME" constraintName="UC_MURECOM_FACT_NAME" tableName="MURECOM_FACT"/>
     </changeSet>
     <changeSet id="6" author="murecom">
+        <addUniqueConstraint columnNames="NAME" constraintName="UC_MURECOM_RULE_NAME" tableName="MURECOM_RULE"/>
+    </changeSet>
+    <changeSet id="7" author="murecom">
         <addForeignKeyConstraint baseColumnNames="RULE_ID" baseTableName="MURECOM_CONCLUSION"
                                  constraintName="FK_MURECOM_CONCLUSION_ON_RULE" referencedColumnNames="ID"
                                  referencedTableName="MURECOM_RULE"/>
     </changeSet>
-    <changeSet id="7" author="murecom">
+    <changeSet id="8" author="murecom">
         <addForeignKeyConstraint baseColumnNames="RULE_ID" baseTableName="MURECOM_CONDITION"
                                  constraintName="FK_MURECOM_CONDITION_ON_RULE" referencedColumnNames="ID"
                                  referencedTableName="MURECOM_RULE"/>
+    </changeSet>
+    <changeSet id="9" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="CREATOR_ID" baseTableName="MURECOM_RULE"
+                                 constraintName="FK_MURECOM_RULE_ON_CREATOR" onDelete="CASCADE"
+                                 referencedColumnNames="ID" referencedTableName="MURECOM_USER"/>
+
+        <createIndex indexName="IDX_RULE_CREATOR_ID" tableName="MURECOM_RULE">
+            <column name="CREATOR_ID"/>
+        </createIndex>
     </changeSet>
 </databaseChangeLog>

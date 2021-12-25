@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://primary.caption">
+    <data>
+        <collection id="rulesDc" class="org.izumi.murecom.entity.Rule">
+            <loader id="rulesDl">
+                <query>
+                    <![CDATA[SELECT r FROM murecom_Rule r WHERE r.creator.id = :userId ORDER BY r.name]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+
+    <layout expand="press" spacing="true">
+        <filter dataLoader="rulesDl" autoApply="true"/>
+        <groupTable id="rulesTable" width="100%" dataContainer="rulesDc" align="TOP_CENTER">
+            <actions>
+                <action id="create" type="create">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="edit" type="edit">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="remove" type="remove"/>
+            </actions>
+
+            <columns>
+                <column id="name"/>
+            </columns>
+
+            <simplePagination/>
+
+            <buttonsPanel id="buttonsPanel" alwaysVisible="true">
+                <button id="createBtn" action="rulesTable.create"/>
+                <button id="editBtn" action="rulesTable.edit"/>
+                <button id="removeBtn" action="rulesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+
+        <button id="runBtn" caption="msg://runBtn.caption" align="TOP_CENTER" stylename="primary"/>
+
+        <label id="press"/>
+    </layout>
+</window>

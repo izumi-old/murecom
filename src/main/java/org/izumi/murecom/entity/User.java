@@ -9,6 +9,7 @@ import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.security.authentication.JmixUserDetails;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -21,6 +22,7 @@ import javax.persistence.Transient;
 import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.UUID;
 
 @Getter
@@ -93,5 +95,15 @@ public class User implements JmixUserDetails, HasTimeZone {
     public String getDisplayName() {
         return String.format("%s %s [%s]", (firstName != null ? firstName : ""),
                 (lastName != null ? lastName : ""), username).trim();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities != null ? authorities : new LinkedList<>();
+    }
+
+    @Override
+    public void setAuthorities(@NonNull Collection<? extends GrantedAuthority> authorities) {
+        this.authorities = authorities;
     }
 }

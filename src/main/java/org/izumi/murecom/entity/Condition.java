@@ -1,6 +1,8 @@
 package org.izumi.murecom.entity;
 
+import io.jmix.core.DeletePolicy;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.entity.annotation.OnDelete;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import lombok.Getter;
@@ -34,7 +36,16 @@ public class Condition {
     @Column(name = "NAME", nullable = false, length = 511)
     private String name;
 
+    @OnDelete(value = DeletePolicy.CASCADE)
     @JoinColumn(name = "RULE_ID", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Rule rule;
+
+    public Mode getMode() {
+        return mode != null ? Mode.fromId(mode) : null;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode != null ? mode.getId() : null;
+    }
 }
