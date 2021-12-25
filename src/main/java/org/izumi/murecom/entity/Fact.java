@@ -3,6 +3,8 @@ package org.izumi.murecom.entity;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.UUID;
 
+@Getter
+@Setter
 @JmixEntity
 @Table(name = "MURECOM_FACT")
 @Entity(name = "murecom_Fact")
@@ -23,20 +27,4 @@ public class Fact {
     @InstanceName
     @Column(name = "NAME", nullable = false, unique = true, length = 511)
     private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 }

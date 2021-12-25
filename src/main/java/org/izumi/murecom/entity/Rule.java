@@ -5,6 +5,8 @@ import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +20,8 @@ import javax.persistence.Table;
 import java.util.Collection;
 import java.util.UUID;
 
+@Getter
+@Setter
 @JmixEntity
 @Table(name = "MURECOM_RULE", indexes = {
         @Index(name = "IDX_RULE_CREATOR_ID", columnList = "CREATOR_ID")
@@ -44,44 +48,4 @@ public class Rule {
     @InstanceName
     @Column(name = "NAME", unique = true)
     private String name;
-
-    public User getCreator() {
-        return creator;
-    }
-
-    public void setCreator(User creator) {
-        this.creator = creator;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Collection<Conclusion> getConclusions() {
-        return conclusions;
-    }
-
-    public void setConclusions(Collection<Conclusion> conclusions) {
-        this.conclusions = conclusions;
-    }
-
-    public Collection<Condition> getConditions() {
-        return conditions;
-    }
-
-    public void setConditions(Collection<Condition> conditions) {
-        this.conditions = conditions;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 }
