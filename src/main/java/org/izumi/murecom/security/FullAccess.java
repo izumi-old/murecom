@@ -9,8 +9,8 @@ import io.jmix.security.role.annotation.SpecificPolicy;
 import io.jmix.securityui.role.annotation.MenuPolicy;
 import io.jmix.securityui.role.annotation.ScreenPolicy;
 
-@ResourceRole(name = "Full Access", code = FullAccessRole.CODE)
-public interface FullAccessRole {
+@ResourceRole(name = "Full Access", code = FullAccess.CODE)
+public interface FullAccess {
 
     String CODE = "system-full-access";
 

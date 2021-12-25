@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://primary.caption">
+    <data>
+        <collection id="rulesDc" class="org.izumi.murecom.entity.Rule">
+            <loader id="rulesDl">
+                <query>
+                    <![CDATA[select r from murecom_Rule r order by r.name]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout>
+        <groupTable>
+
+        </groupTable>
+    </layout>
+</window>

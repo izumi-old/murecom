@@ -65,6 +65,11 @@ public class LoginScreen extends Screen {
         initDefaultCredentials();
     }
 
+    @Subscribe
+    private void onAfterShow(AfterShowEvent event) {
+        login();
+    }
+
     private void initLocalesField() {
         localesField.setOptionsMap(messageTools.getAvailableLocalesMap());
         localesField.setValue(app.getLocale());
