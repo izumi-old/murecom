@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
+    <item screen="murecom_Primary" caption="msg://menu_item.primary.caption"/>
+    <item screen="murecom_Fact.browse" caption="msg://menu_item.facts.caption"/>
 </menu-config>

@@ -11,6 +11,11 @@
         </collection>
     </data>
 
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+
     <layout expand="press" spacing="true">
         <filter dataLoader="rulesDl" autoApply="true"/>
         <groupTable id="rulesTable" width="100%" dataContainer="rulesDc" align="TOP_CENTER">
@@ -25,6 +30,7 @@
                         <property name="openMode" value="DIALOG"/>
                     </properties>
                 </action>
+                <action id="refresh" type="refresh"/>
                 <action id="remove" type="remove"/>
             </actions>
 
@@ -37,6 +43,7 @@
             <buttonsPanel id="buttonsPanel" alwaysVisible="true">
                 <button id="createBtn" action="rulesTable.create"/>
                 <button id="editBtn" action="rulesTable.edit"/>
+                <button id="refreshBtn" action="rulesTable.refresh"/>
                 <button id="removeBtn" action="rulesTable.remove"/>
             </buttonsPanel>
         </groupTable>

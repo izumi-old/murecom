@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="murecom">
+        <addColumn tableName="MURECOM_FACT">
+            <column name="CREATOR_ID" type="UUID"/>
+        </addColumn>
+
+        <addNotNullConstraint columnName="CREATOR_ID" tableName="MURECOM_FACT"/>
+    </changeSet>
+    <changeSet id="2" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="CREATOR_ID" baseTableName="MURECOM_FACT"
+                                 constraintName="FK_MURECOM_FACT_ON_CREATOR" onDelete="CASCADE"
+                                 referencedColumnNames="ID" referencedTableName="MURECOM_USER"/>
+
+        <createIndex indexName="IDX_FACT_CREATOR_ID" tableName="MURECOM_FACT">
+            <column name="CREATOR_ID"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

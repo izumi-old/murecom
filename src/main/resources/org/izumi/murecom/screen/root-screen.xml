@@ -1,7 +1,8 @@
 <window xmlns="http://jmix.io/schema/ui/window"
         caption="msg://application.caption">
-    <layout>
-        <workArea id="workArea" height="100%" width="100%">
+    <layout expand="workArea">
+        <menu width="100%"/>
+        <workArea id="workArea" width="100%">
             <initialLayout spacing="true" margin="true">
             </initialLayout>
         </workArea>
