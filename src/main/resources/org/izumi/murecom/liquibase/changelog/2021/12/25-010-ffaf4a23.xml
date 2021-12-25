@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="murecom">
+        <createTable tableName="MURECOM_CONCLUSION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_CONCLUSION"/>
+            </column>
+            <column name="NAME" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RULE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="murecom">
+        <createTable tableName="MURECOM_CONDITION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_CONDITION"/>
+            </column>
+            <column name="MODE" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RULE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="murecom">
+        <createTable tableName="MURECOM_FACT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_FACT"/>
+            </column>
+            <column name="NAME" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="murecom">
+        <createTable tableName="MURECOM_RULE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_RULE"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="murecom">
+        <addUniqueConstraint columnNames="NAME" constraintName="UC_MURECOM_FACT_NAME" tableName="MURECOM_FACT"/>
+    </changeSet>
+    <changeSet id="6" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="RULE_ID" baseTableName="MURECOM_CONCLUSION"
+                                 constraintName="FK_MURECOM_CONCLUSION_ON_RULE" referencedColumnNames="ID"
+                                 referencedTableName="MURECOM_RULE"/>
+    </changeSet>
+    <changeSet id="7" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="RULE_ID" baseTableName="MURECOM_CONDITION"
+                                 constraintName="FK_MURECOM_CONDITION_ON_RULE" referencedColumnNames="ID"
+                                 referencedTableName="MURECOM_RULE"/>
+    </changeSet>
+</databaseChangeLog>
