@@ -7,7 +7,7 @@ import io.jmix.ui.screen.Subscribe;
 import io.jmix.ui.screen.UiController;
 import io.jmix.ui.screen.UiDescriptor;
 import org.izumi.murecom.UserSource;
-import org.izumi.murecom.entity.Conclusion;
+import org.izumi.murecom.entity.RuleConclusion;
 import org.izumi.murecom.entity.Condition;
 import org.izumi.murecom.entity.Rule;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,8 @@ public class RuleEditor extends StandardEditor<Rule> {
     }
 
     @Install(to = "conclusionsTable.create", subject = "initializer")
-    private void conclusionsTableCreateInitializer(Conclusion conclusion) {
-        conclusion.setRule(getEditedEntity());
+    private void conclusionsTableCreateInitializer(RuleConclusion ruleConclusion) {
+        ruleConclusion.setRule(getEditedEntity());
     }
 
     @Install(to = "conditionsTable.create", subject = "screenConfigurer")
@@ -47,12 +47,12 @@ public class RuleEditor extends StandardEditor<Rule> {
     }
 
     @Install(to = "conclusionsTable.create", subject = "screenConfigurer")
-    private void conclusionsTableCreateScreenConfigurer(ConclusionEditor editor) {
+    private void conclusionsTableCreateScreenConfigurer(RuleConclusionEditor editor) {
         editor.getDataContext().setParent(getScreenData().getDataContext());
     }
 
     @Install(to = "conclusionsTable.edit", subject = "screenConfigurer")
-    private void conclusionsTableEditScreenConfigurer(ConclusionEditor editor) {
+    private void conclusionsTableEditScreenConfigurer(RuleConclusionEditor editor) {
         editor.getDataContext().setParent(getScreenData().getDataContext());
     }
 }

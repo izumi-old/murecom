@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://songEditor.caption"
+        focusComponent="form">
+    <data>
+        <instance id="songDc"
+                  class="org.izumi.murecom.entity.output.Song">
+            <fetchPlan extends="_base">
+                <property name="tags" fetchPlan="_base">
+                    <property name="tag" fetchPlan="_base"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="tagsDc" property="tags"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="songDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+            </column>
+        </form>
+
+        <groupTable id="tagsTable" dataContainer="tagsDc" width="100%">
+            <actions>
+                <action id="create" type="create">
+                    <properties>
+                        <property name="screenClass" value="org.izumi.murecom.screen.output.OutputTagEditor"/>
+                    </properties>
+                </action>
+                <action id="edit" type="edit">
+                    <properties>
+                        <property name="screenClass" value="org.izumi.murecom.screen.output.OutputTagEditor"/>
+                    </properties>
+                </action>
+                <action id="remove" type="remove"/>
+            </actions>
+
+            <columns>
+                <column id="tag"/>
+            </columns>
+
+            <buttonsPanel alwaysVisible="true">
+                <button id="createBtn" action="tagsTable.create"/>
+                <button id="editBtn" action="tagsTable.edit"/>
+                <button id="removeBtn" action="tagsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://poll.caption">
+    <data>
+        <collection id="conclusionsDc" class="org.izumi.murecom.entity.RuleConclusion"/>
+    </data>
+
+    <layout margin="true" spacing="true" width="100%" expand="editActions">
+        <radioButtonGroup id="question1" align="TOP_LEFT" required="true" caption="a"/>
+        <radioButtonGroup id="question2" align="TOP_LEFT" required="true" caption="b"/>
+        <radioButtonGroup id="question3" align="TOP_LEFT" required="true" caption="c"/>
+        <radioButtonGroup id="question4" align="TOP_LEFT" required="true" caption="d"/>
+        <radioButtonGroup id="question5" align="TOP_LEFT" required="true" caption="e"/>
+
+        <hbox id="editActions" spacing="true">
+            <button id="proceedBtn" caption="msg://proceedBtn.caption"/>
+        </hbox>
+    </layout>
+</window>

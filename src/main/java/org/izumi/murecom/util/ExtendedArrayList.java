@@ -12,7 +12,8 @@ public class ExtendedArrayList<T> extends ArrayList<T> {
     public ExtendedArrayList() {
     }
 
-    public ExtendedArrayList(T[] ts) {
+    @SafeVarargs
+    public ExtendedArrayList(T... ts) {
         this(Arrays.asList(ts));
     }
 

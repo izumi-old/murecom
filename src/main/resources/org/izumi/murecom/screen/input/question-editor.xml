@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://questionEditor.caption"
+        focusComponent="form">
+    <data>
+        <instance id="questionDc"
+                  class="org.izumi.murecom.entity.input.Question">
+            <fetchPlan extends="_base">
+                <property name="options" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="optionsDc" property="options"/>
+        </instance>
+    </data>
+
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="questionDc">
+            <column width="350px">
+                <textField id="bodyField" property="body"/>
+            </column>
+        </form>
+
+        <groupTable id="optionsTable" dataContainer="optionsDc">
+            <actions>
+                <action id="create" type="create">
+                    <properties>
+                        <property name="screenClass" value="org.izumi.murecom.screen.input.OptionEditor"/>
+                    </properties>
+                </action>
+                <action id="edit" type="edit">
+                    <properties>
+                        <property name="screenClass" value="org.izumi.murecom.screen.input.OptionEditor"/>
+                    </properties>
+                </action>
+                <action id="remove" type="remove"/>
+            </actions>
+
+            <columns>
+                <column id="answer"/>
+            </columns>
+
+            <buttonsPanel alwaysVisible="true">
+                <button id="createBtn" action="optionsTable.create"/>
+                <button id="editBtn" action="optionsTable.edit"/>
+                <button id="removeBtn" action="optionsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+
+
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

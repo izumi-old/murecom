@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://result.caption">
+
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+
+    <layout margin="true" spacing="true" expand="windowControlButtons">
+        <textArea id="resultArea" editable="false"/>
+
+        <hbox id="windowControlButtons">
+            <button id="closeBtn" caption="msg://closeBtn.caption" align="TOP_CENTER"/>
+        </hbox>
+    </layout>
+</window>

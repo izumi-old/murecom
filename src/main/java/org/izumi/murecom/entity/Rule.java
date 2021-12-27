@@ -43,7 +43,7 @@ public class Rule {
     private Collection<Condition> conditions;
 
     @OneToMany(mappedBy = "rule")
-    private Collection<Conclusion> conclusions;
+    private Collection<RuleConclusion> ruleConclusions;
 
     @InstanceName
     @Column(name = "NAME", unique = true)

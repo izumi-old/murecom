@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
-    <item screen="murecom_Primary" caption="msg://menu_item.primary.caption"/>
-    <item screen="murecom_Fact.browse" caption="msg://menu_item.facts.caption"/>
+    <item id="primary" screen="murecom_Primary" caption="msg://org.izumi.murecom/menu_item.primary.caption"/>
+    <item id="poll" screen="murecom_Poll" caption="msg://org.izumi.murecom/menu-item.poll.caption"/>
+    <item id="facts" screen="murecom_Fact.browse" caption="msg://org.izumi.murecom/menu_item.facts.caption"/>
+    <menu id="service" caption="msg://org.izumi.murecom/menu-item.service.caption">
+        <item id="questions" screen="murecom_Question.browse" caption="msg://org.izumi.murecom/menu-item.questions.caption"/>
+        <item id="songs" screen="murecom_Song.browse" caption="msg://org.izumi.murecom/menu-item.songs.caption"/>
+        <item id="tags" screen="murecom_Tag.browse" caption="msg://org.izumi.murecom/menu-item.tags.caption"/>
+    </menu>
 </menu-config>

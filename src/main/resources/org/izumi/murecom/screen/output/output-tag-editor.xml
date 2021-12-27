@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://conclusionEditor.caption"
+        caption="msg://outputTagEditor.caption"
         focusComponent="form">
     <data>
-        <instance id="conclusionDc"
-                  class="org.izumi.murecom.entity.Conclusion">
-            <fetchPlan extends="_base"/>
+        <instance id="outputTagDc"
+                  class="org.izumi.murecom.entity.output.OutputTag">
+            <fetchPlan extends="_base">
+                <property name="tag" fetchPlan="_base"/>
+            </fetchPlan>
             <loader/>
         </instance>
     </data>
+
     <facets>
         <dataLoadCoordinator auto="true"/>
         <screenSettings id="settingsFacet" auto="true"/>
     </facets>
+
     <actions>
         <action id="windowCommitAndClose" caption="msg:///actions.Ok"
                 icon="EDITOR_OK"
@@ -22,14 +26,21 @@
                 caption="msg:///actions.Close"
                 icon="EDITOR_CANCEL"/>
     </actions>
+
     <dialogMode height="AUTO"
                 width="AUTO"
                 modal="true"
                 forceDialog="true"/>
+
     <layout spacing="true" expand="editActions">
-        <form id="form" dataContainer="conclusionDc">
+        <form id="form" dataContainer="outputTagDc">
             <column width="350px">
-                <textField id="nameField" property="name"/>
+                <entityPicker id="tagField" property="tag">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

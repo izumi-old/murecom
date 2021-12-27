@@ -10,7 +10,7 @@
             </fetchPlan>
             <loader id="factsDl">
                 <query>
-                    <![CDATA[SELECT f FROM murecom_Fact f WHERE f.creator.id = :userId ORDER BY f.name]]>
+                    <![CDATA[SELECT f FROM murecom_Fact f WHERE f.creator.id = :userId ORDER BY f.weight DESC, f.name]]>
                 </query>
             </loader>
         </collection>
@@ -44,9 +44,12 @@
                 <action id="edit" type="edit"/>
                 <action id="refresh" type="refresh"/>
                 <action id="remove" type="remove"/>
+                <action id="removeAll" caption="msg://action.removeAll.caption" icon="font-icon:REMOVE"/>
             </actions>
             <columns>
                 <column id="name"/>
+                <column id="leveled"/>
+                <column id="weight"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
@@ -55,6 +58,7 @@
                 <button id="editBtn" action="factsTable.edit"/>
                 <button id="refreshBtn" action="factsTable.refresh"/>
                 <button id="removeBtn" action="factsTable.remove"/>
+                <button id="removeAllBtn" action="factsTable.removeAll"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

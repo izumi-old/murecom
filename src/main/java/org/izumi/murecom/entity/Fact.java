@@ -40,4 +40,10 @@ public class Fact {
     @InstanceName
     @Column(name = "NAME", nullable = false, unique = true, length = 511)
     private String name;
+
+    @Column(name = "LEVELED", nullable = false)
+    private Boolean leveled;
+
+    @Column(name = "WEIGHT", nullable = false)
+    private Double weight;
 }

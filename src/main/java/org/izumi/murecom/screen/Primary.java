@@ -3,6 +3,7 @@ package org.izumi.murecom.screen;
 import io.jmix.core.Id;
 import io.jmix.core.Messages;
 import io.jmix.ui.Notifications;
+import io.jmix.ui.Screens;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.model.DataLoader;
 import io.jmix.ui.screen.Screen;
@@ -33,9 +34,13 @@ public class Primary extends Screen {
     @Autowired
     private Messages messages;
 
+    @Autowired
+    private Screens screens;
+
     @Subscribe
     private void onBeforeShow(BeforeShowEvent event) {
         rulesDl.setParameter("userId", userSource.getEffective().getId());
+        getScreenData().loadAll();
     }
 
     @Subscribe("runBtn")
@@ -46,7 +51,7 @@ public class Primary extends Screen {
                     .withCaption(messages.getMessage("ruleLogic.success.caption"))
                     .withDescription(messages.getMessage("ruleLogic.success.description"))
                     .withPosition(Notifications.Position.BOTTOM_RIGHT)
-                    .show();
+                    .withCloseListener(closeEvent -> screens.create(Result.class).show()).show();
         } else {
             notifications.create(Notifications.NotificationType.ERROR)
                     .withCaption(messages.getMessage("ruleLogic.fail.caption"))

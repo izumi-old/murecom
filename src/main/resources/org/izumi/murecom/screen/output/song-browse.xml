@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://songBrowse.caption"
+        focusComponent="songsTable">
+    <data readOnly="true">
+        <collection id="songsDc"
+                    class="org.izumi.murecom.entity.output.Song">
+            <fetchPlan extends="_base">
+                <property name="tags" fetchPlan="_base">
+                    <property name="tag" fetchPlan="_base"/>
+                </property>
+            </fetchPlan>
+            <loader id="songsDl">
+                <query>
+                    <![CDATA[select e from murecom_Song e ORDER BY e.name]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+
+    <dialogMode height="600"
+                width="800"/>
+
+    <layout expand="songsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="songsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="songsTable"
+                    width="100%"
+                    dataContainer="songsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="refresh" type="refresh"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="songsTable.create"/>
+                <button id="editBtn" action="songsTable.edit"/>
+                <button id="refreshBtn" action="songsTable.refresh"/>
+                <button id="removeBtn" action="songsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

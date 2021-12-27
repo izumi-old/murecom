@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://tagBrowse.caption"
+        focusComponent="tagsTable">
+    <data readOnly="true">
+        <collection id="tagsDc"
+                    class="org.izumi.murecom.entity.output.Tag">
+            <fetchPlan extends="_base"/>
+            <loader id="tagsDl">
+                <query>
+                    <![CDATA[select e from murecom_Tag e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tagsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="tagsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="tagsTable"
+                    width="100%"
+                    dataContainer="tagsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="refresh" type="refresh"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="value"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tagsTable.create"/>
+                <button id="editBtn" action="tagsTable.edit"/>
+                <button id="refreshBtn" action="tagsTable.refresh"/>
+                <button id="removeBtn" action="tagsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

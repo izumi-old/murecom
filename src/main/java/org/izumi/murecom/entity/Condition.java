@@ -32,6 +32,9 @@ public class Condition {
     @Column(name = "MODE", nullable = false)
     private Integer mode;
 
+    @Column(name = "NEGATION", nullable = false)
+    private Boolean negation;
+
     @InstanceName
     @Column(name = "NAME", nullable = false, length = 511)
     private String name;

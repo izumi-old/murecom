@@ -9,10 +9,12 @@
             <loader/>
         </instance>
     </data>
+
     <facets>
         <dataLoadCoordinator auto="true"/>
         <screenSettings id="settingsFacet" auto="true"/>
     </facets>
+
     <actions>
         <action id="windowCommitAndClose" caption="msg:///actions.Ok"
                 icon="EDITOR_OK"
@@ -22,16 +24,19 @@
                 caption="msg:///actions.Close"
                 icon="EDITOR_CANCEL"/>
     </actions>
+
     <dialogMode height="AUTO"
                 width="AUTO"
                 modal="true"
                 forceDialog="true"/>
+
     <layout spacing="true" expand="editActions">
         <form id="form" dataContainer="conditionDc">
             <column width="350px">
                 <comboBox id="modeComboBox" property="mode" optionsEnum="org.izumi.murecom.entity.Mode"
-                          nullOptionVisible="false"/>
-                <textField id="nameField" property="name"/>
+                          nullOptionVisible="false" required="true"/>
+                <checkBox id="negationBox" property="negation" contextHelpText="msg://negationHint.value"/>
+                <suggestionField id="nameField" property="name" required="true"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

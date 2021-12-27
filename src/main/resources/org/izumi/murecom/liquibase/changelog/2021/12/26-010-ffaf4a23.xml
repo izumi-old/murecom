@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="murecom">
+        <createTable tableName="MURECOM_CONCLUSION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_CONCLUSION"/>
+            </column>
+            <column name="LEVELING" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="murecom">
+        <createTable tableName="MURECOM_CONDITION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_CONDITION"/>
+            </column>
+            <column name="MODE" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NEGATION" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RULE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="murecom">
+        <createTable tableName="MURECOM_FACT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_FACT"/>
+            </column>
+            <column name="CREATOR_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LEVELED" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="WEIGHT" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="murecom">
+        <createTable tableName="MURECOM_OPTION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_OPTION"/>
+            </column>
+            <column name="QUESTION_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ANSWER" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="murecom">
+        <createTable tableName="MURECOM_OUTPUT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_OUTPUT"/>
+            </column>
+            <column name="NAME" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="murecom">
+        <createTable tableName="MURECOM_OUTPUT_TAG">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_OUTPUT_TAG"/>
+            </column>
+            <column name="OUTPUT_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TAG_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="7" author="murecom">
+        <createTable tableName="MURECOM_QUESTION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_QUESTION"/>
+            </column>
+            <column name="BODY" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="8" author="murecom">
+        <createTable tableName="MURECOM_QUESTION_CONCLUSION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_QUESTION_CONCLUSION"/>
+            </column>
+            <column name="OPTION_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALUE" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="9" author="murecom">
+        <createTable tableName="MURECOM_RULE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_RULE"/>
+            </column>
+            <column name="CREATOR_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="10" author="murecom">
+        <createTable tableName="MURECOM_RULE_CONCLUSION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_RULE_CONCLUSION"/>
+            </column>
+            <column name="LEVELING" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RULE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="11" author="murecom">
+        <createTable tableName="MURECOM_SONG">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_SONG"/>
+            </column>
+            <column name="NAME" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="12" author="murecom">
+        <createTable tableName="MURECOM_TAG">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_MURECOM_TAG"/>
+            </column>
+            <column name="VALUE" type="VARCHAR(511)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="13" author="murecom">
+        <addUniqueConstraint columnNames="NAME" constraintName="UC_MURECOM_FACT_NAME" tableName="MURECOM_FACT"/>
+    </changeSet>
+    <changeSet id="14" author="murecom">
+        <addUniqueConstraint columnNames="NAME" constraintName="UC_MURECOM_RULE_NAME" tableName="MURECOM_RULE"/>
+    </changeSet>
+    <changeSet id="15" author="murecom">
+        <addUniqueConstraint columnNames="VALUE" constraintName="UC_MURECOM_TAG_VALUE" tableName="MURECOM_TAG"/>
+    </changeSet>
+    <changeSet id="16" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="OUTPUT_ID" baseTableName="MURECOM_OUTPUT_TAG"
+                                 constraintName="FK_MURECOMOUTPUTTAG_ON_OUTPUT" onDelete="CASCADE"
+                                 referencedColumnNames="ID" referencedTableName="MURECOM_OUTPUT"/>
+
+        <createIndex indexName="IDX_OUTPUTTAG_OUTPUT_ID" tableName="MURECOM_OUTPUT_TAG">
+            <column name="OUTPUT_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="17" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="OPTION_ID" baseTableName="MURECOM_QUESTION_CONCLUSION"
+                                 constraintName="FK_MURECOMQUESTIONCO_ON_OPTION" onDelete="CASCADE"
+                                 referencedColumnNames="ID" referencedTableName="MURECOM_OPTION"/>
+
+        <createIndex indexName="IDX_QUESTIONCONCLUSION" tableName="MURECOM_QUESTION_CONCLUSION">
+            <column name="OPTION_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="18" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="RULE_ID" baseTableName="MURECOM_RULE_CONCLUSION"
+                                 constraintName="FK_MURECOMRULECONCLUSI_ON_RULE" referencedColumnNames="ID"
+                                 referencedTableName="MURECOM_RULE"/>
+    </changeSet>
+    <changeSet id="19" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="RULE_ID" baseTableName="MURECOM_CONDITION"
+                                 constraintName="FK_MURECOM_CONDITION_ON_RULE" referencedColumnNames="ID"
+                                 referencedTableName="MURECOM_RULE"/>
+    </changeSet>
+    <changeSet id="20" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="CREATOR_ID" baseTableName="MURECOM_FACT"
+                                 constraintName="FK_MURECOM_FACT_ON_CREATOR" onDelete="CASCADE"
+                                 referencedColumnNames="ID" referencedTableName="MURECOM_USER"/>
+
+        <createIndex indexName="IDX_FACT_CREATOR_ID" tableName="MURECOM_FACT">
+            <column name="CREATOR_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="21" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="QUESTION_ID" baseTableName="MURECOM_OPTION"
+                                 constraintName="FK_MURECOM_OPTION_ON_QUESTION" onDelete="CASCADE"
+                                 referencedColumnNames="ID" referencedTableName="MURECOM_QUESTION"/>
+
+        <createIndex indexName="IDX_OPTION_QUESTION_ID" tableName="MURECOM_OPTION">
+            <column name="QUESTION_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="22" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="TAG_ID" baseTableName="MURECOM_OUTPUT_TAG"
+                                 constraintName="FK_MURECOM_OUTPUT_TAG_ON_TAG" onDelete="CASCADE"
+                                 referencedColumnNames="ID" referencedTableName="MURECOM_TAG"/>
+
+        <createIndex indexName="IDX_OUTPUTTAG_TAG_ID" tableName="MURECOM_OUTPUT_TAG">
+            <column name="TAG_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="23" author="murecom">
+        <addForeignKeyConstraint baseColumnNames="CREATOR_ID" baseTableName="MURECOM_RULE"
+                                 constraintName="FK_MURECOM_RULE_ON_CREATOR" onDelete="CASCADE"
+                                 referencedColumnNames="ID" referencedTableName="MURECOM_USER"/>
+
+        <createIndex indexName="IDX_RULE_CREATOR_ID" tableName="MURECOM_RULE">
+            <column name="CREATOR_ID"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
