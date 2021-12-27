@@ -8,7 +8,7 @@
                 forceDialog="true"/>
 
     <layout margin="true" spacing="true" expand="windowControlButtons">
-        <textArea id="resultArea" editable="false"/>
+        <textArea id="resultArea" editable="false" rows="20"/>
 
         <hbox id="windowControlButtons">
             <button id="closeBtn" caption="msg://closeBtn.caption" align="TOP_CENTER"/>

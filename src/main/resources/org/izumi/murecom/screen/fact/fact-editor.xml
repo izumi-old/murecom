@@ -33,7 +33,9 @@
     <layout spacing="true" expand="editActions">
         <form id="form" dataContainer="factDc">
             <column width="350px">
-                <suggestionField id="nameField" property="name"/>
+                <suggestionField id="nameField" property="name" required="true"/>
+                <checkBox property="leveled"/>
+                <textField property="weight" required="true"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

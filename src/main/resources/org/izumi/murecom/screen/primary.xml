@@ -18,6 +18,7 @@
 
     <layout expand="press" spacing="true">
         <filter dataLoader="rulesDl" autoApply="true"/>
+        <label stylename="h1 bold" value="msg://ruleHeader.caption" align="TOP_CENTER"/>
         <groupTable id="rulesTable" width="100%" dataContainer="rulesDc" align="TOP_CENTER">
             <actions>
                 <action id="create" type="create">
